@@ -39,7 +39,7 @@ class Program
             if (Control.IsKeyLocked(Keys.NumLock))
                 Click();
 
-            Thread.Sleep(50);
+            Thread.Sleep(10);
         }
     }
 }
