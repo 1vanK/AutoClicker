@@ -39,7 +39,7 @@ class Program
             if (Control.IsKeyLocked(Keys.NumLock))
                 Click();
 
-            Thread.Sleep(10);
+            Thread.Sleep(10); // Увеличьте задержку, если комп не справляется
         }
     }
 }
