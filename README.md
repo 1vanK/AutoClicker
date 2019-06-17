@@ -4,3 +4,5 @@
 Если комп не справляется, попробуйте увеличить задержку.<br>
 Писал для бесплатного кликера [Cell to Singularity - Evolution Never Ends](https://store.steampowered.com/app/977400/).<br>
 Видео: <https://www.youtube.com/watch?v=VTCOFfcnAUY>.
+
+P.S. Игру переодически фризит из-за garbage collection (это нормально для игры на движке Unity).
