@@ -12,6 +12,7 @@ class Program
     [Flags]
     public enum MouseEventFlags : uint
     {
+        None        = 0,
         LeftDown    = 0x00000002,
         LeftUp      = 0x00000004,
         MiddleDown  = 0x00000020,
@@ -22,14 +23,20 @@ class Program
         RightUp     = 0x00000010
     }
 
-    public static void Click()
+    // Функция жмет нужные кнопки мыши
+    public static void Click(bool left, bool middle, bool right)
     {
         Point pos = Cursor.Position;
 
-        mouse_event(MouseEventFlags.LeftDown | MouseEventFlags.LeftUp |
-                    MouseEventFlags.MiddleDown | MouseEventFlags.MiddleUp |
-                    MouseEventFlags.RightDown | MouseEventFlags.RightUp,
-                    (uint)pos.X, (uint)pos.Y, 0, 0);
+        MouseEventFlags flags = MouseEventFlags.None;
+        if (left)
+            flags |= MouseEventFlags.LeftDown | MouseEventFlags.LeftUp;
+        if (middle)
+            flags |= MouseEventFlags.MiddleDown | MouseEventFlags.MiddleUp;
+        if (right)
+            flags |= MouseEventFlags.RightDown | MouseEventFlags.RightUp;
+
+        mouse_event(flags, (uint)pos.X, (uint)pos.Y, 0, 0);
     }
 
     static void Main(string[] args)
@@ -37,7 +44,7 @@ class Program
         while (true)
         {
             if (Control.IsKeyLocked(Keys.NumLock))
-                Click();
+                Click(true, true, true);
 
             Thread.Sleep(10); // Увеличьте задержку, если комп не справляется
         }
